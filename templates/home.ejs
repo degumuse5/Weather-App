@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>City Search</title>
+</head>
+<style>
+  body, html {
+    height: 100%; /* Use full height of the window */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+  /* Styling for the container that holds the button, if needed for additional control */
+  .center-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+  
+  #cityInput {
+    border-radius: 30px;
+    font-size: 50px;
+  }
+  
+  #ser {
+    font-size: 30px;
+    border-radius: 30px;
+  }
+  #pre {
+    font-size: 30px;
+    border-radius: 30px;
+  }
+  #selected-value {
+    font-size: 30px;
+    border-radius: 30px;
+  }
+  
+  .center-container {
+    font-size: 30px;
+  }
+</style>
+<body>
+    <div class="center-container">
+      <strong>Weather For US States Only</strong>
+        <form id="form" method="post" action="">
+            <br><input type="text" name="state" placeholder="type a state...." id="selected-value">
+            <input type="submit" value="Search" id="ser" onclick="search()">
+            <input type="submit" id="pre" value="Previous Searches" onclick="previousSearch()">
+            </div>
+        </form>
+    </div>
+    <script>
+
+
+        const form = document.getElementById("form");
+        const {hostname, port} = window.location
+        function search() {
+          console.log(document.getElementById("selected-value").value)
+          const url = `http://${hostname}:${port}/search`;
+          form.action = url;
+        }
+        function previousSearch() {
+            const url = `http://${hostname}:${port}/pre`;
+            form.action = url;
+        }
+    </script>
+</body>
+</html>
